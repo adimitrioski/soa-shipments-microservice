@@ -1,0 +1,14 @@
+python-dotenv
+connexion
+pybreaker
+flask
+marshmallow
+marshmallow_enum
+marshmallow-sqlalchemy
+sqlalchemy
+flask_script
+flask_migrate
+flask_sqlalchemy
+flask_marshmallow
+swagger-ui-bundle
+psycopg2
