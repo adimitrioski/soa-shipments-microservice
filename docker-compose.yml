@@ -1,25 +1,35 @@
 version: '2.1'
+
+networks: 
+  soa-shipping:
+    driver: bridge
+
+volumes: 
+  db:
+
 services:
   postgres:
     restart: always
     image: postgres:latest
-    container_name: ${POSTGRES_CONTAINER_NAME}
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
-      - PGDATA=/data/postgres
-    volumes:
-      - postgres:/data/postgres
     ports:
-      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+      - "${POSTGRES_PORT}:5432"
+    networks:
+      - soa-shipping
+    volumes:
+          - "db:/var/lib/postgresql/data"
   app:
     restart: always
     build: .
     ports:
       - 15111:15111
+    networks:
+      - soa-shipping
     volumes:
       - .:/app
     depends_on:
       - postgres
-    entrypoint: ["python", "server.py"]
+    entrypoint: ["./docker-entrypoint.sh"]

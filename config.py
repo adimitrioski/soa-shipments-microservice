@@ -20,11 +20,11 @@ app = connex_app.app
 
 postgres_user = os.getenv("POSTGRES_USER")
 postgres_db = os.getenv("POSTGRES_DB")
-postgres_port = os.getenv("POSTGRES_PORT")
 postgres_hostname = os.getenv("POSTGRES_HOSTNAME")
+postgres_password = os.getenv("POSTGRES_PASSWORD")
 
 # Build the PostgreSQL URL for SqlAlchemy
-postgres_url = f"postgresql+psycopg2://{postgres_user}@postgres:{postgres_port}/{postgres_db}"
+postgres_url = f"postgresql+psycopg2://{postgres_user}:{postgres_password}@postgres:5432/{postgres_db}"
 
 # Configure the SqlAlchemy part of the app instance
 app.config["SQLALCHEMY_ECHO"] = False
