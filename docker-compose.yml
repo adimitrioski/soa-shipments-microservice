@@ -25,7 +25,7 @@ services:
     restart: always
     build: .
     ports:
-      - 15111:15111
+      - ${APP_PORT}:${APP_PORT}
     networks:
       - soa-shipping
     volumes:

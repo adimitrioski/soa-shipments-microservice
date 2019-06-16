@@ -23,6 +23,8 @@ postgres_db = os.getenv("POSTGRES_DB")
 postgres_hostname = os.getenv("POSTGRES_HOSTNAME")
 postgres_password = os.getenv("POSTGRES_PASSWORD")
 
+app_port = os.getenv("APP_PORT")
+
 # Build the PostgreSQL URL for SqlAlchemy
 postgres_url = f"postgresql+psycopg2://{postgres_user}:{postgres_password}@postgres:5432/{postgres_db}"
 

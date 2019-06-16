@@ -52,6 +52,12 @@ paths:
       summary: Get a single shipment
       parameters:
         - $ref: '#/components/parameters/shipment_id'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              x-body-name: shipment
+              $ref: '#/components/schemas/Shipment'
       responses:
         '200':
           description: Return shipment
